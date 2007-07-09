@@ -9,6 +9,7 @@ Source0:	http://linux.dell.com/efibootmgr/permalink/%{name}-%{version}.tar.gz
 # Source0-md5:	7021146c6634459ebd2fec84375754c6
 URL:		http://linux.dell.com/projects.shtml#efibootmgr
 BuildRequires:	pciutils-devel
+ExclusiveArch:	%{ix86} %{x8664} ia64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
