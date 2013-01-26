@@ -1,12 +1,12 @@
 Summary:	EFI Boot Manager
 Summary(pl.UTF-8):	Boot Manager dla EFI
 Name:		efibootmgr
-Version:	0.5.4
+Version:	0.6.0
 Release:	1
 License:	GPL v2+
 Group:		Base
 Source0:	http://linux.dell.com/efibootmgr/permalink/%{name}-%{version}.tar.gz
-# Source0-md5:	cfcf24752d6461b73f7ba964bbf73169
+# Source0-md5:	9e9a31d79e579644de83a14139b66d10
 URL:		http://linux.dell.com/projects.shtml#efibootmgr
 BuildRequires:	pciutils-devel
 ExclusiveArch:	%{ix86} %{x8664} ia64
@@ -28,9 +28,9 @@ można znaleźć pod adresem
 %setup -q
 
 %build
-CFLAGS="%{rpmcflags}" \
 %{__make} \
 	CC="%{__cc}" \
+	EXTRA_CFLAGS="%{rpmcflags}" \
 	VPATH=%{_libdir}
 
 %install
