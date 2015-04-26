@@ -2,7 +2,7 @@ Summary:	EFI Boot Manager
 Summary(pl.UTF-8):	Boot Manager dla EFI
 Name:		efibootmgr
 Version:	0.11.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Base
 #Source0:	http://linux.dell.com/efibootmgr/permalink/%{name}-%{version}.tar.gz
@@ -12,7 +12,7 @@ Patch0:		%{name}-efivar.patch
 URL:		http://linux.dell.com/projects.shtml#efibootmgr
 BuildRequires:	efivar-devel
 BuildRequires:	pciutils-devel
-ExclusiveArch:	%{ix86} %{x8664} ia64
+ExclusiveArch:	%{ix86} %{x8664} ia64 x32
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
