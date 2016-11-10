@@ -1,14 +1,13 @@
 Summary:	EFI Boot Manager
 Summary(pl.UTF-8):	Boot Manager dla EFI
 Name:		efibootmgr
-Version:	0.12
+Version:	14
 Release:	1
 License:	GPL v2+
 Group:		Base
-#Source0:	http://linux.dell.com/efibootmgr/permalink/%{name}-%{version}.tar.gz
-Source0:	https://github.com/rhinstaller/efibootmgr/archive/%{name}-%{version}.tar.gz
-# Source0-md5:	0c4fa2e1d850c8391914071ff2ddb361
-URL:		http://linux.dell.com/projects.shtml#efibootmgr
+Source0:	https://github.com/rhinstaller/efibootmgr/releases/download/%{version}/%{name}-%{version}.tar.bz2
+# Source0-md5:	f74e87963c2c5cb1bf6d588675dbd9b4
+URL:		https://github.com/rhinstaller/efibootmgr
 BuildRequires:	efivar-devel >= 0.20
 BuildRequires:	pciutils-devel
 Requires:	efivar >= 0.20
@@ -28,7 +27,7 @@ można znaleźć pod adresem
 <http://developer.intel.com/technology/efi/efi.htm>.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q -n %{name}-%{version}
 
 %build
 %{__make} \
@@ -40,14 +39,18 @@ można znaleźć pod adresem
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8}
 
-install src/efibootmgr/efibootmgr $RPM_BUILD_ROOT%{_sbindir}
-install src/man/man8/efibootmgr.8 $RPM_BUILD_ROOT%{_mandir}/man8
+install src/efibootmgr $RPM_BUILD_ROOT%{_sbindir}
+install src/efibootdump $RPM_BUILD_ROOT%{_sbindir}
+install src/efibootmgr.8 $RPM_BUILD_ROOT%{_mandir}/man8
+install src/efibootdump.8 $RPM_BUILD_ROOT%{_mandir}/man8
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS README doc/{ChangeLog,TODO}
+%doc AUTHORS README.md TODO
+%attr(755,root,root) %{_sbindir}/efibootdump
 %attr(755,root,root) %{_sbindir}/efibootmgr
+%{_mandir}/man8/efibootdump.8*
 %{_mandir}/man8/efibootmgr.8*
