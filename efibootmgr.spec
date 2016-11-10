@@ -10,7 +10,7 @@ Source0:	https://github.com/rhinstaller/efibootmgr/releases/download/%{version}/
 URL:		https://github.com/rhinstaller/efibootmgr
 BuildRequires:	efivar-devel >= 0.20
 BuildRequires:	pciutils-devel
-Requires:	efivar >= 0.20
+Requires:	efivar-libs >= 0.20
 ExclusiveArch:	%{ix86} %{x8664} ia64 x32
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
