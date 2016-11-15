@@ -8,9 +8,9 @@ Group:		Base
 Source0:	https://github.com/rhinstaller/efibootmgr/releases/download/%{version}/%{name}-%{version}.tar.bz2
 # Source0-md5:	f74e87963c2c5cb1bf6d588675dbd9b4
 URL:		https://github.com/rhinstaller/efibootmgr
-BuildRequires:	efivar-devel >= 0.20
+BuildRequires:	efivar-devel >= 30
 BuildRequires:	pciutils-devel
-Requires:	efivar-libs >= 0.20
+Requires:	efivar-libs >= 30
 ExclusiveArch:	%{ix86} %{x8664} ia64 x32
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -27,7 +27,7 @@ można znaleźć pod adresem
 <http://developer.intel.com/technology/efi/efi.htm>.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 %{__make} \
