@@ -1,17 +1,17 @@
 Summary:	EFI Boot Manager
 Summary(pl.UTF-8):	Boot Manager dla EFI
 Name:		efibootmgr
-Version:	14
+Version:	15
 Release:	1
 License:	GPL v2+
 Group:		Base
 Source0:	https://github.com/rhinstaller/efibootmgr/releases/download/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	f74e87963c2c5cb1bf6d588675dbd9b4
+# Source0-md5:	62597b082f27da940bf18f0ec8c5907b
 URL:		https://github.com/rhinstaller/efibootmgr
 BuildRequires:	efivar-devel >= 30
-BuildRequires:	pciutils-devel
+BuildRequires:	popt-devel
 Requires:	efivar-libs >= 30
-ExclusiveArch:	%{ix86} %{x8664} ia64 x32
+ExclusiveArch:	%{ix86} %{x8664} x32 %{arm} aarch64 ia64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,8 +32,10 @@ można znaleźć pod adresem
 %build
 %{__make} \
 	CC="%{__cc}" \
+	EFIDIR=pld \
 	EXTRA_CFLAGS="%{rpmcflags} -I/usr/include/efivar" \
-	VPATH=%{_libdir}
+	VPATH=%{_libdir} \
+	libdir=%{_libdir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
