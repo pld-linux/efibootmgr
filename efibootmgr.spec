@@ -1,12 +1,13 @@
 Summary:	EFI Boot Manager
 Summary(pl.UTF-8):	Boot Manager dla EFI
 Name:		efibootmgr
-Version:	15
+Version:	16
 Release:	1
 License:	GPL v2+
 Group:		Base
+#Source0Download: https://github.com/rhboot/efibootmgr/releases
 Source0:	https://github.com/rhinstaller/efibootmgr/releases/download/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	62597b082f27da940bf18f0ec8c5907b
+# Source0-md5:	ab7cf46774fda951a0e8a40beb65a90e
 URL:		https://github.com/rhinstaller/efibootmgr
 BuildRequires:	efivar-devel >= 30
 BuildRequires:	popt-devel
@@ -30,21 +31,19 @@ można znaleźć pod adresem
 %setup -q
 
 %build
+CFLAGS="%{rpmcflags}" \
 %{__make} \
 	CC="%{__cc}" \
 	EFIDIR=pld \
-	EXTRA_CFLAGS="%{rpmcflags} -I/usr/include/efivar" \
 	VPATH=%{_libdir} \
 	libdir=%{_libdir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8}
 
-install src/efibootmgr $RPM_BUILD_ROOT%{_sbindir}
-install src/efibootdump $RPM_BUILD_ROOT%{_sbindir}
-install src/efibootmgr.8 $RPM_BUILD_ROOT%{_mandir}/man8
-install src/efibootdump.8 $RPM_BUILD_ROOT%{_mandir}/man8
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	EFIDIR=pld
 
 %clean
 rm -rf $RPM_BUILD_ROOT
