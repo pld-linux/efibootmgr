@@ -1,13 +1,13 @@
 Summary:	EFI Boot Manager
 Summary(pl.UTF-8):	Boot Manager dla EFI
 Name:		efibootmgr
-Version:	16
+Version:	18
 Release:	1
 License:	GPL v2+
 Group:		Base
 #Source0Download: https://github.com/rhboot/efibootmgr/releases
 Source0:	https://github.com/rhboot/efibootmgr/releases/download/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	ab7cf46774fda951a0e8a40beb65a90e
+# Source0-md5:	a92ce8fd2b282fa30f066797b14095ef
 URL:		https://github.com/rhboot/efibootmgr
 BuildRequires:	efivar-devel >= 30
 BuildRequires:	popt-devel
